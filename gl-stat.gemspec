@@ -21,6 +21,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake', '~> 12.3'
   s.add_development_dependency 'aruba', '~> 0.14.3'
   s.add_development_dependency 'rdoc', '~> 6.0'
+  s.add_development_dependency 'rspec', '~> 3.4'
+  s.add_development_dependency 'rspec-mocks', '~> 3.7'
   s.add_runtime_dependency 'gli', '2.17.1'
   s.add_runtime_dependency 'faraday', '~> 0.13.1'
 end

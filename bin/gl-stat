@@ -1,11 +1,6 @@
 #!/usr/bin/env ruby
 require 'gli'
-require 'faraday'
-require 'benchmark'
-
-include Benchmark
-
-DEFAULT_REPORT_INTERVAL = 6
+require 'gl-stat'
 
 begin # XXX: Remove this begin/rescue before distributing your app
 require 'gl-stat'
@@ -22,30 +17,18 @@ program_desc 'Get average response times for GitLab pages'
 
 version GlStat::VERSION
 
-def get_report url
-  response_times = []
-  (0..(DEFAULT_REPORT_INTERVAL - 1)).each_with_index do |_, index|
-    time = Benchmark.realtime { Faraday.get(url) }
-    response_times << time
-    puts "Response time for #{url} #{time} seconds"
-    sleep 10 unless index == DEFAULT_REPORT_INTERVAL - 1
-  end
-  puts "Average response time #{response_times.inject(:+) / response_times.length} seconds"
-end
-
-
 def check_home
-  get_report "https://gitlab.com"
+  GlStat::GetReport.for "https://gitlab.com"
 end
 
 def check_about
-  get_report "https://about.gitlab.com"
+  GlStat::GetReport.for "https://about.gitlab.com"
 end
 
 desc 'Gets the average response time for the GitLab home page'
 command :home do |c|
   c.action do
-    get_report "https://gitlab.com"
+    check_home
   end
 end
 
