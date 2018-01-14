@@ -2,4 +2,4 @@ language: ruby
 
 script:
   - bundle exec rspec
-  - rake cucumber
+  - bundle exec cucumber
