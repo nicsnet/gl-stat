@@ -1,0 +1,5 @@
+= gl-stat
+
+Generate this with
+    gl-stat rdoc
+After you have described your command line interface
