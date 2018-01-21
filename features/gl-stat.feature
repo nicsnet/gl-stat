@@ -15,7 +15,7 @@ Feature: Runnig the app
           gl-stat [global options] command [command options] [arguments...]
 
     VERSION
-          0.0.2
+          0.0.3
 
     GLOBAL OPTIONS
           --help    - Show this message
